@@ -26,6 +26,7 @@
   --discrip-text-bcg: rgba(47, 48, 58, 0.8);
   --backdrop-color: rgba(0, 0, 0, 0.2);
   --input-border-color: rgba(33, 33, 33, 0.2);
+  --placeholder-color: rgba(117, 117, 117, 0.5);
 }
 
 /* Стили для обнуления верхних отступов у элементов */
@@ -602,6 +603,7 @@ body {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  overflow: auto;
 }
 
 .close {
@@ -643,9 +645,12 @@ body {
 .input-area {
   width: 100%;
   height: 40px;
+  padding-left: 42px;
+  padding-right: 8px;
   border: 1px solid var(--input-border-color);
   border-radius: 4px;
   cursor: pointer;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form-icon {
@@ -654,12 +659,114 @@ body {
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.input-area:focus,
+.input-area:hover {
+  border-color: var(--accent-color);
+  outline: transparent;
+}
+
+.input-area:focus + .form-icon,
+.input-area:hover + .form-icon {
+  fill: var(--accent-color);
+}
 .user-coment {
   width: 100%;
   resize: none;
+  width: 100%;
+  height: 120px;
+  padding: 12px 16px;
+
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.user-coment:hover,
+.user-coment:focus {
+  border-color: var(--accent-color);
+  outline: transparent;
+}
+
+.user-coment::placeholder {
+  color: var(--placeholder-color);
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+}
+.checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.terms-checkbox {
+  appearance: none;
+}
+
+.checkbox-text {
+  font-size: 14px;
+  line-height: 1.71;
+  padding-left: 37px;
+  cursor: pointer;
+}
+
+.terms-license {
+  color: var(--accent-color);
+}
+.checkbox-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 2px solid var(--title-text-color);
+  border-radius: 2px;
+  fill: transparent;
+  pointer-events: none;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.terms-checkbox:hover + .checkbox-icon {
+  border-color: var(--accent-color);
+}
+
+.terms-checkbox:checked + .checkbox-icon {
+  fill: var(--alternative-text-color);
+  background-color: var(--accent-color);
+  border-color: transparent;
+}
+
+.submit-button {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.86;
+  text-align: center;
+  letter-spacing: 0.06em;
+
+  border-color: transparent;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+
+  background-color: var(--accent-color);
+  color: var(--alternative-text-color);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.submit-button:hover,
+.submit-button:focus {
+  background-color: var(--alternative-accent-color);
+}
+
 /* Портфоліо */
 
 /* Фільтри */
